@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Hosting
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IWebHostEnvironment HostingEnvironment
+
+
+<h1>@HostingEnvironment.ApplicationName</h1>
+
+@{
+    var urlRoot = $"{HttpContextAccessor.HttpContext?.Request.Scheme}://{HttpContextAccessor.HttpContext?.Request.Host}{Url.Content("~")}";
+}
+
+<p>@urlRoot</p>
+
+
+<a href="@Url.Action("SimpleAppSettingsJson","Config")">Read appSettings.json - Simple</a>
+
+<hr />
+
+<a href="@Url.Action("SimpleDataJson","Config")">Read data.json - Simple</a>
+
+<hr />
+
+<a href="@Url.Action("IOptionsAppSettingsJson","Config")">Read appSettings.json - Ioptions</a>
+
+<hr />
+
+<a href="@Url.Action("IOptionsDataJson","Config")">Read data.json - Ioptions</a>
+
+<hr />
+
+<a href="@Url.Action("PreBindingAppSettingsJson","Config")">Read data.json - Prebinding</a>
+
+<hr />
+
+<a href="@Url.Action("PreBindingDataJson","Config")">Read data.json - Prebinding</a>
+
+<hr />
